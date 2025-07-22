@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import {
   DataTypes,
   InferAttributes,
@@ -15,7 +16,6 @@ import {
   PrimaryKey,
   Unique,
 } from "@sequelize/core/decorators-legacy";
-import { v4 as uuidv4 } from "uuid";
 import Instructor from "./Instructor.model";
 
 export default class User extends Model<

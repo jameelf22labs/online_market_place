@@ -9,12 +9,16 @@ import {
   Column,
   ColumnName,
   Default,
+  HasMany,
   Index,
   NotNull,
   PrimaryKey,
   Table,
+  Unique,
 } from "@sequelize/core/decorators-legacy";
+import { NonAttribute } from "sequelize";
 import { v4 as uuidv4 } from "uuid";
+import Courses from "./Courses.model";
 
 @Table({ tableName: "instructor_details" })
 export default class Instructor extends Model<
@@ -41,5 +45,9 @@ export default class Instructor extends Model<
   @ColumnName("user_id")
   @NotNull
   @Index
+  @Unique
   declare userId: string;
+
+  @HasMany(() => Courses, "instructorId")
+  declare courses?: NonAttribute<Courses[]>;
 }
