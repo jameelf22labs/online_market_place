@@ -33,5 +33,5 @@ export default class Categories extends Model<
   declare slug: string;
 
   @HasMany(() => Courses, "categoryId")
-  declare courses: NonAttribute<Courses>;
+  declare courses: NonAttribute<Courses[]>;
 }

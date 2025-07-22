@@ -16,6 +16,8 @@ import {
   PrimaryKey,
 } from "@sequelize/core/decorators-legacy";
 import Lectures from "./Lectures.model";
+import Enrollments from "./Enrollments.model";
+import Payments from "./Payment.model";
 
 export default class Courses extends Model<
   InferAttributes<Courses>,
@@ -54,4 +56,10 @@ export default class Courses extends Model<
 
   @HasMany(() => Lectures, "courseId")
   declare lectures?: NonAttribute<Lectures[]>;
+
+  @HasMany(() => Enrollments, "courseId")
+  declare enrollments?: NonAttribute<Enrollments[]>;
+
+  @HasMany(() => Payments, "courseId")
+  declare payments?: NonAttribute<Payments[]>;
 }

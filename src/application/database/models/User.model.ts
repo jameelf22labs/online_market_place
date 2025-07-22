@@ -10,6 +10,7 @@ import { Roles } from "../enums/role.enums";
 import {
   Attribute,
   Default,
+  HasMany,
   HasOne,
   Index,
   NotNull,
@@ -17,6 +18,8 @@ import {
   Unique,
 } from "@sequelize/core/decorators-legacy";
 import Instructor from "./Instructor.model";
+import Enrollments from "./Enrollments.model";
+import Payments from "./Payment.model";
 
 export default class User extends Model<
   InferAttributes<User>,
@@ -47,4 +50,10 @@ export default class User extends Model<
 
   @HasOne(() => Instructor, "userId")
   declare instructure?: NonAttribute<Instructor>;
+
+  @HasMany(() => Enrollments, "userId")
+  declare enrollments?: NonAttribute<Enrollments[]>;
+
+  @HasMany(() => Payments, "userId")
+  declare payments?: NonAttribute<Payments[]>;
 }
