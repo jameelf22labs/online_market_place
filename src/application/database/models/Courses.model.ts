@@ -33,14 +33,14 @@ export default class Courses extends Model<
   declare title: string;
 
   @Attribute(DataTypes.TEXT)
-  declare description: string;
+  declare description?: string;
 
   @Attribute(DataTypes.FLOAT)
   declare price: number;
 
   @Attribute(DataTypes.STRING)
   @ColumnName("thumbnil_url")
-  declare thumbnilUrl: string;
+  declare thumbnilUrl?: string;
 
   @Attribute(DataTypes.UUID)
   @NotNull

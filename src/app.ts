@@ -2,12 +2,18 @@ import express from "express";
 import sequelize from "./application/database/config/sequalize-database";
 import importRoutes from "./application/module";
 import globalErrorMiddleware from "./application/middleare/global.error.middleware";
+import multer from "multer";
+import storage from "./config/storage-config";
+
+const upload = multer({ dest: "/upload" });
 
 const application = async () => {
   try {
     const app = express();
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
+
+    const upload = multer({ storage: storage });
 
     app.use((req, res, next) => {
       const time = new Date(Date.now()).toString();
@@ -25,10 +31,10 @@ const application = async () => {
     await sequelize.sync();
     console.log("Sequelize with Postgres Connected");
 
-    const router = importRoutes();
+    const router = importRoutes(upload);
     app.use("/api/v1", router);
     app.use(globalErrorMiddleware);
-    
+
     return app;
   } catch (error) {
     throw error;

@@ -4,6 +4,7 @@ import Courses from "../../database/models/Courses.model";
 export type AuthUser = {
   name: string;
   email: string;
+  id : string;
   role: string;
 };
 

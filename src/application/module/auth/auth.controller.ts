@@ -47,7 +47,7 @@ const AuthHandler = {
         .setStatus(true)
         .setMessage("User Successfully Created")
         .setData(loginUser)
-        .send(201);
+        .send(200);
     } catch (error) {
       next(error);
     }
