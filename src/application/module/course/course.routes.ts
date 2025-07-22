@@ -4,6 +4,7 @@ import CourseHandler from "./course.controller";
 import isInstructor from "../../middleare/instructor.middleware";
 
 const initCourseRoutes = (router: Router, multerStorage: multer.Multer) => {
+  
   router.use(isInstructor);
 
   router.post(

@@ -11,7 +11,7 @@ const JwtMiddleware = {
   verifyToken: (request: Request, response: Response, next: NextFunction) => {
     const authHeader = request.header("Authorization");
 
-    if (!authHeader || !authHeader.includes("Barear ")) {
+    if (!authHeader || !authHeader.includes("Bearer ")) {
       return next(new UnAuthorizedError(" Token was missing "));
     }
 

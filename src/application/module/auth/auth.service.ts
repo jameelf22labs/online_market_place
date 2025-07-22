@@ -59,7 +59,7 @@ const AuthService = {
       name: existUser.name,
       email: existUser.email,
       role: existUser.role,
-      id : existUser.id
+      id: existUser.id,
     });
 
     return {

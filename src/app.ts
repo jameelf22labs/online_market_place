@@ -5,8 +5,6 @@ import globalErrorMiddleware from "./application/middleare/global.error.middlewa
 import multer from "multer";
 import storage from "./config/storage-config";
 
-const upload = multer({ dest: "/upload" });
-
 const application = async () => {
   try {
     const app = express();

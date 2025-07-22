@@ -4,6 +4,7 @@ import { SignUpPayloadDto } from "../../common/dto";
 import ApiResponse from "../../common/utils/ApiSucessResponse";
 import { RegisterUserSchema, LoginUserSchema } from "./auth.validator";
 import { BadRequestError } from "../../errors";
+import { AuthenticatedRequest } from "../../common/interface/AuthenticateRequest";
 
 const AuthHandler = {
   register: async (
@@ -48,6 +49,18 @@ const AuthHandler = {
         .setMessage("User Successfully Created")
         .setData(loginUser)
         .send(200);
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  createInstructor: async (
+    request: AuthenticatedRequest,
+    response: Response,
+    next: NextFunction
+  ) => {
+    try {
+      
     } catch (error) {
       next(error);
     }
