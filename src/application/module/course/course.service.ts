@@ -17,6 +17,7 @@ const CourseService = {
     return {
       id: createdCourse.id,
       title: createdCourse.title,
+      thumpnilUrl: createdCourse.thumbnilUrl,
     };
   },
 
@@ -43,7 +44,7 @@ const CourseService = {
     const course = await Courses.findByPk(courseId);
 
     if (!course) {
-      throw new NotFoundError("Your given edited course not found");
+      throw new NotFoundError("Your given deleted course not found");
     }
 
     await Courses.destroy({ where: { id: courseId } });

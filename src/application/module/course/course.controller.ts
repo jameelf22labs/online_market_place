@@ -40,6 +40,12 @@ const CourseHandler = {
     }
   },
 
+  get: async (
+    equest: AuthenticatedRequest,
+    response: Response,
+    next: NextFunction
+  ) => {},
+
   update: async (
     request: AuthenticatedRequest,
     response: Response,
@@ -89,12 +95,6 @@ const CourseHandler = {
       next(error);
     }
   },
-
-  get: async (
-    equest: AuthenticatedRequest,
-    response: Response,
-    next: NextFunction
-  ) => {},
 };
 
 export default CourseHandler;
