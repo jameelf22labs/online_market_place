@@ -4,15 +4,18 @@ import {
   InferAttributes,
   InferCreationAttributes,
   Model,
+  NonAttribute,
 } from "@sequelize/core";
 import {
   Attribute,
   ColumnName,
   Default,
+  HasMany,
   Index,
   NotNull,
   PrimaryKey,
 } from "@sequelize/core/decorators-legacy";
+import Lectures from "./Lectures.model";
 
 export default class Courses extends Model<
   InferAttributes<Courses>,
@@ -48,4 +51,7 @@ export default class Courses extends Model<
   @Index
   @ColumnName("category_id")
   declare categoryId: string;
+
+  @HasMany(() => Lectures, "courseId")
+  declare lectures?: NonAttribute<Lectures[]>;
 }
