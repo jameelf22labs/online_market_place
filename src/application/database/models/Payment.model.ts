@@ -14,7 +14,10 @@ import {
   NotNull,
   PrimaryKey,
 } from "@sequelize/core/decorators-legacy";
-import { PaymentStatusEnum } from "../enums/payment.status.enum";
+import {
+  PaymentMethodEnum,
+  PaymentStatusEnum,
+} from "../enums/payment.status.enum";
 
 export default class Payments extends Model<
   InferAttributes<Payments>,
@@ -32,6 +35,30 @@ export default class Payments extends Model<
   @Default(() => PaymentStatusEnum.Pending)
   @Index
   declare status: string;
+
+  @Attribute(DataTypes.STRING)
+  @Default(() => PaymentMethodEnum.CreditCard)
+  @ColumnName('payment_method')
+  declare paymentMethod: string;
+
+  @Attribute(DataTypes.STRING)
+  declare cardNumber?: string;
+
+  @Attribute(DataTypes.STRING)
+  declare cardName?: string;
+
+  @Attribute(DataTypes.STRING)
+  declare address?: string;
+
+  @Attribute(DataTypes.STRING)
+  declare state?: string;
+
+  @Attribute(DataTypes.STRING)
+  declare country?: string;
+
+  @Attribute(DataTypes.INTEGER)
+  @ColumnName("postal_code")
+  declare postalCode?: number;
 
   @Attribute(DataTypes.UUID)
   @Index

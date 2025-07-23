@@ -9,7 +9,11 @@ import {
   CourseFilterParamDto,
 } from "./course.dto";
 import { LecturePayloadDto } from "./lecture.dto";
-import { CreateEnrollmentDto, CancelEnrollmentDto } from "./enrollment.dto";
+import {
+  CreateEnrollmentDto,
+  CancelEnrollmentDto,
+  PaymentDetailsDto,
+} from "./enrollment.dto";
 export {
   SignUpPayloadDto,
   LoginPayloadDto,
@@ -20,4 +24,5 @@ export {
   CreateInstructorPayloadDto,
   CreateEnrollmentDto,
   CancelEnrollmentDto,
+  PaymentDetailsDto,
 };

@@ -7,6 +7,7 @@ import EnrollementService from "./enrollements.service";
 import Joi, { string } from "joi";
 import ApiResponse from "../../common/utils/ApiSucessResponse";
 import { EnrollmentQueryHelper } from "../../database/helpers";
+import { PaymentValidateSchema } from "./enrollements.validator";
 
 const EnrollementHandler = {
   enrollCourse: async (
@@ -73,6 +74,28 @@ const EnrollementHandler = {
         .setStatus(true)
         .setMessage("Enrollement Status")
         .setData({ enrolled: hasEnrolled })
+        .send();
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  processPayment: async (
+    request: AuthenticatedRequest,
+    response: Response,
+    next: NextFunction
+  ) => {
+    try {
+      await PaymentValidateSchema.validateAsync(request.body);
+      const payment = await EnrollementService.processPayment({
+        ...request.body,
+        userId: (request.user as AuthUser).id,
+      });
+
+      return new ApiResponse(response)
+        .setData(payment)
+        .setStatus(true)
+        .setMessage("Payment Suceesfully")
         .send();
     } catch (error) {
       next(error);
