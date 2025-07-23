@@ -6,9 +6,14 @@ import { BadRequestError } from "../../errors";
 import { EnrollmentsStatusEnum } from "../../database/enums/enrollement.status.enum";
 import Payments from "../../database/models/Payment.model";
 import { PaymentStatusEnum } from "../../database/enums/payment.status.enum";
+import QueueLib from "../../queue/queue.lib";
+import { JobEnum, QueueEnum } from "../../queue/constants";
 
 const EnrollementService = {
-  enrollCourse: async (enrollment: CreateEnrollmentDto) => {
+  enrollCourse: async (
+    enrollment: CreateEnrollmentDto,
+    user: { name: string; email: string }
+  ) => {
     const isUserEnrolledInCourse =
       await EnrollmentQueryHelper.isUserEnrolledInCourse(
         enrollment.userId,
@@ -25,6 +30,8 @@ const EnrollementService = {
       userId: enrollment.userId,
       courseId: enrollment.courseId,
     });
+
+    QueueLib.enQueue(JobEnum.EnrollmentSuccess, QueueEnum.Enrolled, { user });
 
     return {
       id: createdEnrollment.id,
@@ -47,7 +54,10 @@ const EnrollementService = {
     });
   },
 
-  processPayment: async (paymentDetails: PaymentDetailsDto) => {
+  processPayment: async (
+    paymentDetails: PaymentDetailsDto,
+    user: { email: string; name: string }
+  ) => {
     const payment = await Payments.create({
       ...paymentDetails,
       id: v4(),
@@ -59,6 +69,10 @@ const EnrollementService = {
       paymentDetails.userId,
       paymentDetails.courseId
     );
+
+    QueueLib.enQueue(JobEnum.PaymentSuccess, QueueEnum.PaymentSuccess, {
+      user,
+    });
 
     return {
       id: payment.id,

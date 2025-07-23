@@ -7,13 +7,17 @@ type PostgressType = {
   Port: number;
   Username: string;
   Password: string;
-  Db : string;
+  Db: string;
 };
 
 type EnvConfiqType = {
   Port: Number;
   Postgress: PostgressType;
   JwtSectret: string;
+  Email: {
+    User: string;
+    Password: string;
+  };
 };
 
 const envConfig: EnvConfiqType = {
@@ -23,9 +27,13 @@ const envConfig: EnvConfiqType = {
     Port: Number(process.env.POSTGRESS_PORT),
     Username: process.env.POSTGRESS_USERNAME || "",
     Password: (process.env.POSTGRESS_PASSWORD as string) || "",
-    Db : process.env.POSTGRESS_DB || ""
+    Db: process.env.POSTGRESS_DB || "",
   },
   JwtSectret: process.env.JWT_SECRETS || "",
+  Email: {
+    User: process.env.EMAIL_SERVICE_USER || "",
+    Password: process.env.EMAIL_SERVICE_PASS || "",
+  },
 };
 
 export default envConfig;

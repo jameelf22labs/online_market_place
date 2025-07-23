@@ -20,10 +20,18 @@ const EnrollementHandler = {
         courseId: string().required(),
       }).validateAsync(request.body);
 
-      const enrolled = await EnrollementService.enrollCourse({
-        userId: (request.user as AuthUser).id,
-        courseId: request.body.courseId,
-      });
+      const user = request.user as AuthUser;
+
+      const enrolled = await EnrollementService.enrollCourse(
+        {
+          userId: user.id,
+          courseId: request.body.courseId,
+        },
+        {
+          email: user.email,
+          name: user.name,
+        }
+      );
 
       return new ApiResponse(response)
         .setStatus(true)
@@ -87,10 +95,14 @@ const EnrollementHandler = {
   ) => {
     try {
       await PaymentValidateSchema.validateAsync(request.body);
-      const payment = await EnrollementService.processPayment({
-        ...request.body,
-        userId: (request.user as AuthUser).id,
-      });
+      const user = request.user as AuthUser;
+      const payment = await EnrollementService.processPayment(
+        {
+          ...request.body,
+          userId: user.id,
+        },
+        { email: user.email, name: user.name }
+      );
 
       return new ApiResponse(response)
         .setData(payment)
