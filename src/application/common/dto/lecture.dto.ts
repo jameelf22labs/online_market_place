@@ -1,6 +1,8 @@
 export interface LecturePayloadDto {
   courseId: string;
   title: string;
-  video_url: string;
+  videoUrl: string;
+  duration : number;
+  id : string
 }
 

@@ -4,7 +4,9 @@ import CourseHandler from "./course.controller";
 import isInstructor from "../../middleare/instructor.middleware";
 
 const initCourseRoutes = (router: Router, multerStorage: multer.Multer) => {
-  
+
+  router.get('/course/get/:courseId' , CourseHandler.getByCourseId)
+
   router.use(isInstructor);
 
   router.post(
@@ -12,7 +14,13 @@ const initCourseRoutes = (router: Router, multerStorage: multer.Multer) => {
     multerStorage.single("thumbnil"),
     CourseHandler.create
   );
-  router.put("/course/update/:courseId", CourseHandler.update);
+
+  router.put(
+    "/course/update/:courseId",
+    multerStorage.single("thumbnil"),
+    CourseHandler.update
+  );
+
   router.delete("/course/delete/:courseId", CourseHandler.delete);
 };
 

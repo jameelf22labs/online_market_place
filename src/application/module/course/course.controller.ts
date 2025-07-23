@@ -4,6 +4,7 @@ import CourseService from "./course.service";
 import { CreateCourseSchema, UpdateCourseSchema } from "./course.validator";
 import { BadRequestError } from "../../errors";
 import {
+  CourseFilterParamDto,
   CreateCoursePayloadDto,
   UpdateCoursePayloadDto,
 } from "../../common/dto";
@@ -40,11 +41,46 @@ const CourseHandler = {
     }
   },
 
-  get: async (
-    equest: AuthenticatedRequest,
+  getByCourseId: async (
+    request: AuthenticatedRequest,
     response: Response,
     next: NextFunction
-  ) => {},
+  ) => {
+    try {
+      const { courseId } = request.params as { courseId: string };
+      const course = await CourseService.getByCourseId(courseId);
+      return new ApiResponse(response)
+        .setStatus(true)
+        .setMessage(course ? "Course Successfully Updated" : "Course Empty")
+        .setData(course)
+        .send(course ? 200 : 204);
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  getAllCourse: async (
+    request: AuthenticatedRequest,
+    response: Response,
+    next: NextFunction
+  ) => {
+    try {
+      const query = request.query as unknown as CourseFilterParamDto;
+      const course = await CourseService.getAllCourse(
+        query,
+        query.page,
+        query.limit
+      );
+
+      return new ApiResponse(response)
+        .setStatus(true)
+        .setMessage(course ? "Course are listed" : "Course Empty")
+        .setData(course)
+        .send(course ? 200 : 204);
+    } catch (error) {
+      next(error);
+    }
+  },
 
   update: async (
     request: AuthenticatedRequest,
@@ -62,10 +98,15 @@ const CourseHandler = {
 
       const { courseId } = request.params as { courseId: string };
 
-      const updatedCourse = await CourseService.update(
-        courseId,
-        request.body as UpdateCoursePayloadDto
-      );
+      const updatePayload: Partial<UpdateCoursePayloadDto> = {
+        ...request.body,
+      };
+
+      if (request.file) {
+        updatePayload.thumbnilUrl = request.file.filename;
+      }
+
+      const updatedCourse = await CourseService.update(courseId, updatePayload);
 
       return new ApiResponse(response)
         .setStatus(true)

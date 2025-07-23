@@ -6,9 +6,6 @@ const LectureService = {
   create: async (newLecture: LecturePayloadDto) => {
     const createdLecture = await Lectures.create({
       ...newLecture,
-      id: "",
-      videoUrl: "",
-      duration: 0,
     });
 
     return {
@@ -44,5 +41,11 @@ const LectureService = {
     }
 
     await Lectures.destroy({ where: { id: lectureId } });
+
+    return {
+      id: lectureId,
+    };
   },
 };
+
+export default LectureService;
