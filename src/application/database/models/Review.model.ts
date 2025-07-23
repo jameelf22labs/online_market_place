@@ -26,7 +26,7 @@ export default class Review extends Model<
 
   @Attribute(DataTypes.INTEGER)
   @Default(() => 0)
-  declare rating: string;
+  declare rating: number;
 
   @Attribute(DataTypes.TEXT)
   declare comment: string;

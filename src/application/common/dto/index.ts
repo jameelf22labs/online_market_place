@@ -14,6 +14,8 @@ import {
   CancelEnrollmentDto,
   PaymentDetailsDto,
 } from "./enrollment.dto";
+import { ReviewDto } from "./review.dto";
+
 export {
   SignUpPayloadDto,
   LoginPayloadDto,
@@ -25,4 +27,5 @@ export {
   CreateEnrollmentDto,
   CancelEnrollmentDto,
   PaymentDetailsDto,
+  ReviewDto,
 };
