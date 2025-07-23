@@ -3,7 +3,7 @@ import multer from "multer";
 import isInstructor from "../../middleare/instructor.middleware";
 import LectureHandler from "./lecture.controller";
 
-const initCourseRoutes = (router: Router, multerStorage: multer.Multer) => {
+const initLectureRoutes = (router: Router, multerStorage: multer.Multer) => {
   router.use(isInstructor);
 
   router.post(
@@ -19,4 +19,4 @@ const initCourseRoutes = (router: Router, multerStorage: multer.Multer) => {
   router.delete("/lecture/delete/:lectureId", LectureHandler.delete);
 };
 
-export default initCourseRoutes;
+export default initLectureRoutes;

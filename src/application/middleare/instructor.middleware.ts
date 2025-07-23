@@ -21,17 +21,17 @@ const isInstructor = async (
     );
   }
 
-  if (user.role !== Roles.Instructor) {
+  const userDoc = (await UserQueryHelper.findOne({
+    email: user.email,
+  })) as User;
+
+  if (userDoc.role !== Roles.Instructor) {
     return next(
       new UnAuthorizedError(
         "Access Denied, Only Instructor can access this endpoint"
       )
     );
   }
-
-  const userDoc = (await UserQueryHelper.findOne({
-    email: user.email,
-  })) as User;
 
   request.instructor = userDoc.instructure;
 

@@ -1,14 +1,16 @@
+import multer from "multer";
 import { Router } from "express";
 import initAuthRoutes from "./auth/auth.routes";
 import initCourseRoutes from "./course/course.routes";
-import multer from "multer";
-import JwtMiddleware from "../middleare/jwt.middleware";
+import initLectureRoutes from "./lectures/lecture.routes";
+import initCategoryRoutes from "./categories/categories.routes";
 
 const importRoutes = (multerStorage: multer.Multer) => {
   const router = Router();
   initAuthRoutes(router, multerStorage);
-  router.use(JwtMiddleware.verifyToken);
   initCourseRoutes(router, multerStorage);
+  initLectureRoutes(router, multerStorage);
+  initCategoryRoutes(router);
   return router;
 };
 

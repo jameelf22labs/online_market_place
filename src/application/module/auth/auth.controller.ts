@@ -75,11 +75,11 @@ const AuthHandler = {
       }
 
       if (!request.user?.id) {
-        return new UnAuthorizedError("Your not login yet");
+        throw new UnAuthorizedError("Your not login yet");
       }
 
       if (!request.file) {
-        return new BadRequestError("Please upload you profile picture");
+        throw new BadRequestError("Please upload you profile picture");
       }
 
       const instrutor: CreateInstructorPayloadDto = {

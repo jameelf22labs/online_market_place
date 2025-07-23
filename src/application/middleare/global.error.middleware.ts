@@ -1,5 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { BadRequestError, NotFoundError, UnAuthorizedError } from "../errors";
+import { ValidationError } from "@sequelize/core";
+import Joi from "joi";
 
 const globalErrorMiddleware = (
   err: Error,
@@ -30,6 +32,23 @@ const globalErrorMiddleware = (
     return response.status(err.statusCode).json({
       status: false,
       message: "Un Authorized Request",
+      error: err.message,
+    });
+  }
+
+  if (err instanceof Joi.ValidationError) {
+    return response.status(400).json({
+      status: false,
+      message: "Keys are missing",
+      error: err.message,
+      details : err.details
+    });
+  }
+
+  if (err instanceof ValidationError) {
+    return response.status(400).json({
+      status: false,
+      message: "Keys are missing",
       error: err.message,
     });
   }
