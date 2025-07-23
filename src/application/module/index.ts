@@ -6,12 +6,9 @@ import JwtMiddleware from "../middleare/jwt.middleware";
 
 const importRoutes = (multerStorage: multer.Multer) => {
   const router = Router();
-
-  initAuthRoutes(router);
-
+  initAuthRoutes(router, multerStorage);
   router.use(JwtMiddleware.verifyToken);
   initCourseRoutes(router, multerStorage);
-
   return router;
 };
 

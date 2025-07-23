@@ -1,10 +1,18 @@
+import { v4 as uuidv4 } from "uuid";
 import { NextFunction, Request, Response } from "express";
 import AuthService from "./auth.service";
-import { SignUpPayloadDto } from "../../common/dto";
+import { CreateInstructorPayloadDto, SignUpPayloadDto } from "../../common/dto";
 import ApiResponse from "../../common/utils/ApiSucessResponse";
-import { RegisterUserSchema, LoginUserSchema } from "./auth.validator";
-import { BadRequestError } from "../../errors";
-import { AuthenticatedRequest } from "../../common/interface/AuthenticateRequest";
+import {
+  RegisterUserSchema,
+  LoginUserSchema,
+  InstructorSchema,
+} from "./auth.validator";
+import { BadRequestError, UnAuthorizedError } from "../../errors";
+import {
+  AuthenticatedRequest,
+  AuthUser,
+} from "../../common/interface/AuthenticateRequest";
 
 const AuthHandler = {
   register: async (
@@ -60,7 +68,36 @@ const AuthHandler = {
     next: NextFunction
   ) => {
     try {
-      
+      const validate = await InstructorSchema.validateAsync(request.body);
+
+      if (validate?.error) {
+        throw new BadRequestError(validate?.error);
+      }
+
+      if (!request.user?.id) {
+        return new UnAuthorizedError("Your not login yet");
+      }
+
+      if (!request.file) {
+        return new BadRequestError("Please upload you profile picture");
+      }
+
+      const instrutor: CreateInstructorPayloadDto = {
+        ...(request.body as { bio: string; expertise: string }),
+        id: uuidv4(),
+        userId: request.user?.id,
+        profilePicUrl: request.file?.filename,
+      };
+
+      const createdInstructor = await AuthService.createInstrutorAccount(
+        instrutor
+      );
+
+      return new ApiResponse(response)
+        .setStatus(true)
+        .setMessage("Hey Congrats your instructor now")
+        .setData(createdInstructor)
+        .send(200);
     } catch (error) {
       next(error);
     }

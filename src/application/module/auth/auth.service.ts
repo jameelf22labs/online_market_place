@@ -1,12 +1,17 @@
 import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from "uuid";
 
-import { LoginPayloadDto, SignUpPayloadDto } from "../../common/dto";
+import {
+  CreateInstructorPayloadDto,
+  LoginPayloadDto,
+  SignUpPayloadDto,
+} from "../../common/dto";
 import { UserQueryHelper } from "../../database/helpers";
 import { User } from "../../database/models";
 import { BadRequestError, UnAuthorizedError } from "../../errors";
 import { Roles } from "../../database/enums/role.enums";
 import JwtUtils from "../../common/utils/jwt.utils";
+import Instructor from "../../database/models/Instructor.model";
 
 const AuthService = {
   register: async (
@@ -65,6 +70,19 @@ const AuthService = {
     return {
       accessToken,
       user,
+    };
+  },
+
+  createInstrutorAccount: async (instructor: CreateInstructorPayloadDto) => {
+    const createdInstructor = await Instructor.create({ ...instructor });
+
+    await User.update(
+      { role: Roles.Instructor },
+      { where: { id: instructor.userId } }
+    );
+
+    return {
+      id: createdInstructor.id,
     };
   },
 };

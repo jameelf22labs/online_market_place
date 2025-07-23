@@ -1,4 +1,4 @@
-import { SignUpPayloadDto, LoginPayloadDto } from "./auth.dto";
+import { SignUpPayloadDto, LoginPayloadDto , CreateInstructorPayloadDto } from "./auth.dto";
 import { CreateCoursePayloadDto, UpdateCoursePayloadDto , CourseFilterParamDto } from "./course.dto";
 import { LecturePayloadDto } from "./lecture.dto";
 
@@ -8,5 +8,6 @@ export {
   CreateCoursePayloadDto,
   UpdateCoursePayloadDto,
   LecturePayloadDto,
-  CourseFilterParamDto
+  CourseFilterParamDto,
+  CreateInstructorPayloadDto
 };
