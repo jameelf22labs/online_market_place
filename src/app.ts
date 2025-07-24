@@ -3,11 +3,21 @@ import sequelize from "./application/database/config/sequalize-database";
 import importRoutes from "./application/module";
 import globalErrorMiddleware from "./application/middleare/global.error.middleware";
 import multer from "multer";
+import cors from "cors";
 import storage from "./config/storage-config";
+
+const allowedOrigins = ["http://localhost:5173"];
 
 const application = async () => {
   try {
     const app = express();
+
+    app.use(
+      cors({
+        origin: allowedOrigins,
+        credentials: true,
+      })
+    );
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 

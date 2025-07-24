@@ -22,7 +22,7 @@ const CategorieHandler = {
         throw new BadRequestError(validate?.error);
       }
 
-      const categorie = await Categories.findOne({ where: request.body.name });
+      const categorie = await Categories.findOne({ where: {name : request.body.name }  });
 
       if (categorie) {
         throw new BadRequestError(`${request.body.name} already exist.`);

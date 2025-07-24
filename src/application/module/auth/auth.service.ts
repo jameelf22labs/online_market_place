@@ -39,12 +39,7 @@ const AuthService = {
     };
   },
 
-  login: async (
-    user: LoginPayloadDto
-  ): Promise<{
-    accessToken: string;
-    user: LoginPayloadDto;
-  }> => {
+  login: async (user: LoginPayloadDto) => {
     const existUser = await UserQueryHelper.findOne({ email: user.email });
 
     if (!existUser) {
@@ -69,7 +64,12 @@ const AuthService = {
 
     return {
       accessToken,
-      user,
+      user: {
+        email: existUser.email,
+        name: existUser.name,
+        id: existUser.email,
+        role : existUser.role
+      },
     };
   },
 
