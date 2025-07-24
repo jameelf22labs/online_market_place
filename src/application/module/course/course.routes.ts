@@ -16,7 +16,7 @@ const initCourseRoutes = (router: Router, multerStorage: multer.Multer) => {
 
   router.post(
     "/course/create",
-    multerStorage.single("thumbnil"),
+    multerStorage.single("thumbnilUrl"),
     CourseHandler.create
   );
 
