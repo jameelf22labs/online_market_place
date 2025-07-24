@@ -1,6 +1,7 @@
 import { Queue } from "bullmq";
 import { QueueEnum } from "./constants";
 import redisOptions from "../../config/redis-config";
+import logger from "../../config/logger-config";
 
 const EnrollemQueue = new Queue(QueueEnum.Enrolled, {
   connection: redisOptions,
@@ -19,6 +20,7 @@ const queueFactory = (queueName: QueueEnum): Queue => {
   const queue = queues[queueName];
 
   if (!queue) {
+    logger.error(`${queueName} Not Available in registry`)
     throw new Error("Queue not available");
   }
 

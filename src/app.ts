@@ -5,6 +5,7 @@ import globalErrorMiddleware from "./application/middleare/global.error.middlewa
 import multer from "multer";
 import cors from "cors";
 import storage from "./config/storage-config";
+import logger from "./config/logger-config";
 
 const allowedOrigins = ["http://localhost:5173"];
 
@@ -25,7 +26,7 @@ const application = async () => {
 
     app.use((req, res, next) => {
       const time = new Date(Date.now()).toString();
-      console.log(req.method, req.hostname, req.path, time);
+      logger.info(req.method, req.hostname, req.path, time);
       next();
     });
 
@@ -37,7 +38,7 @@ const application = async () => {
 
     await sequelize.authenticate();
     await sequelize.sync();
-    console.log("Sequelize with Postgres Connected");
+    logger.info("Sequelize with Postgres Connected");
 
     const router = importRoutes(upload);
     app.use("/api/v1", router);
