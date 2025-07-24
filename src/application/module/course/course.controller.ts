@@ -28,7 +28,7 @@ const CourseHandler = {
       const createdCourse = await CourseService.create({
         ...request.body,
         thumbnilUrl: request.file?.filename,
-        instructorId: request.user?.id,
+        instructorId: request.instructor?.id,
       } as CreateCoursePayloadDto);
 
       return new ApiResponse(response)
