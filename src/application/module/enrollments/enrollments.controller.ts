@@ -8,6 +8,7 @@ import Joi, { string } from "joi";
 import ApiResponse from "../../common/utils/ApiSucessResponse";
 import { EnrollmentQueryHelper } from "../../database/helpers";
 import { PaymentValidateSchema } from "./enrollements.validator";
+import Enrollments from "../../database/models/Enrollments.model";
 
 const EnrollementHandler = {
   enrollCourse: async (
@@ -73,15 +74,20 @@ const EnrollementHandler = {
   ) => {
     try {
       const { courseId } = request.params as { courseId: string };
+
       const hasEnrolled = await EnrollmentQueryHelper.isUserEnrolledInCourse(
         (request.user as AuthUser).id,
         courseId
       );
 
+      const enroll = await Enrollments.findOne({
+        where: { userId: (request.user as AuthUser).id, courseId },
+      });
+
       return new ApiResponse(response)
         .setStatus(true)
         .setMessage("Enrollement Status")
-        .setData({ enrolled: hasEnrolled })
+        .setData({ enrolled: hasEnrolled, id: enroll?.id })
         .send();
     } catch (error) {
       next(error);

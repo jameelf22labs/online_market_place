@@ -14,11 +14,13 @@ import {
   Index,
   NotNull,
   PrimaryKey,
+  Table,
 } from "@sequelize/core/decorators-legacy";
 import { EnrollmentsStatusEnum } from "../enums/enrollement.status.enum";
 import { NonAttribute } from "sequelize";
 import Review from "./Review.model";
 
+@Table({ tableName: "enrollments_details", timestamps: true })
 export default class Enrollments extends Model<
   InferAttributes<Enrollments>,
   InferCreationAttributes<Enrollments>
@@ -46,4 +48,7 @@ export default class Enrollments extends Model<
 
   @HasOne(() => Review, "enrollmentId")
   declare reviews?: NonAttribute<Review>;
+
+  @Attribute(DataTypes.DATE)
+  declare updatedAt ? : Date;
 }

@@ -4,6 +4,7 @@ import { EnrollmentsStatusEnum } from "../../database/enums/enrollement.status.e
 import Enrollments from "../../database/models/Enrollments.model";
 import Review from "../../database/models/Review.model";
 import { BadRequestError, NotFoundError } from "../../errors";
+import { sql } from "@sequelize/core";
 
 const ReviewService = {
   createReview: async (review: ReviewDto): Promise<{ id: string }> => {
@@ -20,7 +21,7 @@ const ReviewService = {
     const existingReview = await Review.findOne({
       where: { enrollmentId: review.enrollmentId },
     });
-    
+
     if (existingReview) {
       throw new BadRequestError("Review already exists for this enrollment");
     }
@@ -54,6 +55,34 @@ const ReviewService = {
     if (!deleted) {
       throw new NotFoundError("Review not found");
     }
+  },
+
+  getAllReview: async (courseId: string, page = 1, limit = 10) => {
+    const offset = (page - 1) * limit;
+
+    const { rows: reviews, count } = await Review.findAndCountAll({
+      where: { courseId },
+      offset,
+      limit,
+      order: [["createdAt", "DESC"]],
+    });
+
+    return {
+      total: count,
+      page,
+      pages: Math.ceil(count / limit),
+      data: reviews,
+    };
+  },
+
+  getAvgRating: async (courseId: string): Promise<number> => {
+    const result = (await Review.findOne({
+      attributes: [[sql`AVG(rating)`, "avgRating"]],
+      where: { courseId },
+      raw: true,
+    })) as { avgRating: string };
+
+    return Number(result?.avgRating || 0);
   },
 };
 

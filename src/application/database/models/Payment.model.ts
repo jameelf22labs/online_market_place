@@ -13,12 +13,14 @@ import {
   Index,
   NotNull,
   PrimaryKey,
+  Table,
 } from "@sequelize/core/decorators-legacy";
 import {
   PaymentMethodEnum,
   PaymentStatusEnum,
 } from "../enums/payment.status.enum";
 
+@Table({ tableName: "payment_details" , timestamps : true })
 export default class Payments extends Model<
   InferAttributes<Payments>,
   InferCreationAttributes<Payments>

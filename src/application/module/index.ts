@@ -5,6 +5,7 @@ import initCourseRoutes from "./course/course.routes";
 import initLectureRoutes from "./lectures/lecture.routes";
 import initCategoryRoutes from "./categories/categories.routes";
 import initEnrollementRoutes from "./enrollments/enrollements.routes";
+import initReviewRoutes from "./reviews/reviews.routes";
 
 const importRoutes = (multerStorage: multer.Multer) => {
   const router = Router();
@@ -12,7 +13,8 @@ const importRoutes = (multerStorage: multer.Multer) => {
   initCourseRoutes(router, multerStorage);
   initLectureRoutes(router, multerStorage);
   initCategoryRoutes(router);
-  initEnrollementRoutes(router)
+  initEnrollementRoutes(router);
+  initReviewRoutes(router)
   return router;
 };
 

@@ -14,11 +14,14 @@ import {
   Index,
   NotNull,
   PrimaryKey,
+  Table,
 } from "@sequelize/core/decorators-legacy";
 import Lectures from "./Lectures.model";
 import Enrollments from "./Enrollments.model";
 import Payments from "./Payment.model";
+import Review from "./Review.model";
 
+@Table({ tableName: "courses_details" , timestamps : true })
 export default class Courses extends Model<
   InferAttributes<Courses>,
   InferCreationAttributes<Courses>
@@ -62,4 +65,7 @@ export default class Courses extends Model<
 
   @HasMany(() => Payments, "courseId")
   declare payments?: NonAttribute<Payments[]>;
+
+  @HasMany(() => Review, "courseId")
+  declare reviews?: NonAttribute<Review[]>;
 }

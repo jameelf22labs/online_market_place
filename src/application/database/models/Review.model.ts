@@ -12,9 +12,11 @@ import {
   Index,
   NotNull,
   PrimaryKey,
+  Table,
   Unique,
 } from "@sequelize/core/decorators-legacy";
 
+@Table({ tableName: "review_details" , timestamps : true })
 export default class Review extends Model<
   InferAttributes<Review>,
   InferCreationAttributes<Review>
@@ -37,4 +39,10 @@ export default class Review extends Model<
   @ColumnName("enrollement_id")
   @Unique
   declare enrollmentId: string;
+
+  @Attribute(DataTypes.UUID)
+  @NotNull
+  @Index
+  @ColumnName("course_id")
+  declare courseId: string;
 }

@@ -12,8 +12,10 @@ import {
   Index,
   NotNull,
   PrimaryKey,
+  Table,
 } from "@sequelize/core/decorators-legacy";
 
+@Table({ tableName: "lectures_details" , timestamps : true })
 export default class Lectures extends Model<
   InferAttributes<Lectures>,
   InferCreationAttributes<Lectures>

@@ -6,6 +6,7 @@ import multer from "multer";
 import cors from "cors";
 import storage from "./config/storage-config";
 import logger from "./config/logger-config";
+import initCrons from "./application/cron";
 
 const allowedOrigins = ["http://localhost:5173"];
 
@@ -37,8 +38,10 @@ const application = async () => {
     });
 
     await sequelize.authenticate();
-    await sequelize.sync();
+    await sequelize.sync({ force: true });
     logger.info("Sequelize with Postgres Connected");
+
+    initCrons();
 
     const router = importRoutes(upload);
     app.use("/api/v1", router);

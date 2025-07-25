@@ -21,3 +21,37 @@
 [2025-07-24T20:21:37.505] [INFO] default - Application start on Port 9090
 [2025-07-24T20:24:17.262] [INFO] default - GET localhost /api/v1/categorie Thu Jul 24 2025 20:24:17 GMT+0530 (India Standard Time)
 [2025-07-24T20:24:17.313] [INFO] default - GET localhost /api/v1/categorie Thu Jul 24 2025 20:24:17 GMT+0530 (India Standard Time)
+[2025-07-24T23:31:27.334] [INFO] default - Sequelize with Postgres Connected
+[2025-07-24T23:31:27.340] [INFO] default - Application start on Port 9090
+[2025-07-24T23:33:56.642] [INFO] default - Sequelize with Postgres Connected
+[2025-07-24T23:33:56.647] [INFO] default - Application start on Port 9090
+[2025-07-24T23:34:04.544] [INFO] default - Sequelize with Postgres Connected
+[2025-07-24T23:34:04.549] [INFO] default - Application start on Port 9090
+[2025-07-24T23:34:15.377] [INFO] default - Sequelize with Postgres Connected
+[2025-07-24T23:34:15.382] [INFO] default - Application start on Port 9090
+[2025-07-24T23:34:46.087] [INFO] default - Sequelize with Postgres Connected
+[2025-07-24T23:34:46.092] [INFO] default - Application start on Port 9090
+[2025-07-24T23:38:19.474] [INFO] default - Sequelize with Postgres Connected
+[2025-07-24T23:38:19.481] [INFO] default - Application start on Port 9090
+[2025-07-24T23:39:47.854] [INFO] default - Sequelize with Postgres Connected
+[2025-07-24T23:39:47.859] [INFO] default - Application start on Port 9090
+[2025-07-25T11:36:55.754] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T11:36:55.760] [INFO] default - Application start on Port 9090
+[2025-07-25T11:37:22.250] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T11:37:22.257] [INFO] default - Application start on Port 9090
+[2025-07-25T11:39:18.810] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T11:39:18.816] [INFO] default - Application start on Port 9090
+[2025-07-25T12:00:58.976] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T12:00:58.982] [INFO] default - Application start on Port 9090
+[2025-07-25T12:01:00.012] [INFO] default - Enrollement Cron Job Running  2025-07-25T06:31:00.012Z
+[2025-07-25T12:01:00.033] [INFO] default -  Last 30 days enrollemnet 0 completed
+[2025-07-25T12:02:00.007] [INFO] default - Enrollement Cron Job Running  2025-07-25T06:32:00.007Z
+[2025-07-25T12:02:00.027] [INFO] default -  Last 30 days enrollemnet 0 completed
+[2025-07-25T12:03:12.463] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T12:03:12.469] [INFO] default - Application start on Port 9090
+[2025-07-25T12:03:18.193] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T12:03:18.200] [INFO] default - Application start on Port 9090
+[2025-07-25T12:03:29.796] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T12:03:29.809] [INFO] default - Application start on Port 9090
+[2025-07-25T12:03:39.992] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T12:03:39.999] [INFO] default - Application start on Port 9090

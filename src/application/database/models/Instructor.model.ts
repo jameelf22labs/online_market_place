@@ -20,7 +20,7 @@ import { NonAttribute } from "sequelize";
 import { v4 as uuidv4 } from "uuid";
 import Courses from "./Courses.model";
 
-@Table({ tableName: "instructor_details" })
+@Table({ tableName: "instructor_details" , timestamps : true })
 export default class Instructor extends Model<
   InferAttributes<Instructor>,
   InferCreationAttributes<Instructor>

@@ -11,10 +11,12 @@ import {
   HasMany,
   NotNull,
   PrimaryKey,
+  Table,
 } from "@sequelize/core/decorators-legacy";
 import { NonAttribute } from "sequelize";
 import Courses from "./Courses.model";
 
+@Table({ tableName: "categorie_details" , timestamps : true })
 export default class Categories extends Model<
   InferAttributes<Categories>,
   InferCreationAttributes<Categories>

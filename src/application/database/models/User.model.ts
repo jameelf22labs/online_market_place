@@ -15,12 +15,14 @@ import {
   Index,
   NotNull,
   PrimaryKey,
+  Table,
   Unique,
 } from "@sequelize/core/decorators-legacy";
 import Instructor from "./Instructor.model";
 import Enrollments from "./Enrollments.model";
 import Payments from "./Payment.model";
 
+@Table({ tableName: "user_details" , timestamps : true })
 export default class User extends Model<
   InferAttributes<User>,
   InferCreationAttributes<User>
