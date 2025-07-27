@@ -6,9 +6,10 @@ import CategorieHandler from "./categories.controller";
 const initCategoryRoutes = (router: Router) => {
   router.post(
     "/categorie",
-    [(JwtMiddleware.verifyToken, isInstructor)],
+    [JwtMiddleware.verifyToken, isInstructor],
     CategorieHandler.addCategorie
   );
+
   router.get("/categorie", CategorieHandler.getAllCategories);
 };
 

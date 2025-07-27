@@ -6,16 +6,12 @@ import logger from "../../config/logger-config";
 
 const enrollementCompleteCron = () => {
   const EVERY_MONTH_DAY_ONE_12_AM = "0 0 1 * *";
-
   cron.schedule(EVERY_MONTH_DAY_ONE_12_AM, async (ctx: TaskContext) => {
-    
     logger.info(
       `Enrollement Cron Job Running  ${ctx.triggeredAt.toISOString()}`
     );
-
     try {
       const THIRTY_DAYS_AGO = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
-
       const [count] = await Enrollments.update(
         { status: EnrollmentsStatusEnum.Complete },
         {
@@ -25,7 +21,6 @@ const enrollementCompleteCron = () => {
           },
         }
       );
-
       logger.info(` Last 30 days enrollemnet ${count} completed`);
     } catch (error) {
       logger.error("Enrollment Cron Error", error);

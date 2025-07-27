@@ -38,7 +38,9 @@ const application = async () => {
     });
 
     await sequelize.authenticate();
-    await sequelize.sync({ force: true });
+    await sequelize.sync({});
+    // seedDatabase()
+
     logger.info("Sequelize with Postgres Connected");
 
     initCrons();

@@ -55,3 +55,59 @@
 [2025-07-25T12:03:29.809] [INFO] default - Application start on Port 9090
 [2025-07-25T12:03:39.992] [INFO] default - Sequelize with Postgres Connected
 [2025-07-25T12:03:39.999] [INFO] default - Application start on Port 9090
+[2025-07-25T14:33:48.981] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:33:48.988] [INFO] default - Application start on Port 9090
+[2025-07-25T14:34:00.020] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:34:00.027] [INFO] default - Application start on Port 9090
+[2025-07-25T14:34:26.238] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:34:26.244] [INFO] default - Application start on Port 9090
+[2025-07-25T14:35:06.330] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:35:06.336] [INFO] default - Application start on Port 9090
+[2025-07-25T14:35:11.254] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:35:11.260] [INFO] default - Application start on Port 9090
+[2025-07-25T14:35:20.890] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:35:20.897] [INFO] default - Application start on Port 9090
+[2025-07-25T14:35:39.806] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:35:39.812] [INFO] default - Application start on Port 9090
+[2025-07-25T14:35:51.849] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:35:51.855] [INFO] default - Application start on Port 9090
+[2025-07-25T14:37:55.886] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:37:55.892] [INFO] default - Application start on Port 9090
+[2025-07-25T14:38:10.561] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:38:10.576] [INFO] default - Application start on Port 9090
+[2025-07-25T14:40:05.856] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:40:05.863] [INFO] default - Application start on Port 9090
+[2025-07-25T14:40:12.495] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:40:12.502] [INFO] default - Application start on Port 9090
+[2025-07-25T14:40:20.834] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:40:20.841] [INFO] default - Application start on Port 9090
+[2025-07-25T14:41:58.552] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 14:41:58 GMT+0530 (India Standard Time)
+[2025-07-25T14:41:58.595] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 14:41:58 GMT+0530 (India Standard Time)
+[2025-07-25T14:42:01.622] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 14:42:01 GMT+0530 (India Standard Time)
+[2025-07-25T14:42:01.629] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 14:42:01 GMT+0530 (India Standard Time)
+[2025-07-25T14:42:10.789] [INFO] default - POST localhost /api/v1/auth/login Fri Jul 25 2025 14:42:10 GMT+0530 (India Standard Time)
+[2025-07-25T14:42:12.269] [INFO] default - POST localhost /api/v1/auth/login Fri Jul 25 2025 14:42:12 GMT+0530 (India Standard Time)
+[2025-07-25T14:42:30.656] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 14:42:30 GMT+0530 (India Standard Time)
+[2025-07-25T14:42:30.660] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 14:42:30 GMT+0530 (India Standard Time)
+[2025-07-25T14:43:04.151] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:43:04.158] [INFO] default - Application start on Port 9090
+[2025-07-25T14:43:27.700] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:43:27.707] [INFO] default - Application start on Port 9090
+[2025-07-25T14:56:22.451] [INFO] default - POST localhost /api/v1/auth/register Fri Jul 25 2025 14:56:22 GMT+0530 (India Standard Time)
+[2025-07-25T14:56:22.533] [INFO] default - POST localhost /api/v1/auth/login Fri Jul 25 2025 14:56:22 GMT+0530 (India Standard Time)
+[2025-07-25T14:56:22.620] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 14:56:22 GMT+0530 (India Standard Time)
+[2025-07-25T14:56:22.630] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 14:56:22 GMT+0530 (India Standard Time)
+[2025-07-25T14:56:31.983] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 14:56:31 GMT+0530 (India Standard Time)
+[2025-07-25T14:56:31.990] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 14:56:31 GMT+0530 (India Standard Time)
+[2025-07-25T14:57:03.703] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T14:57:03.711] [INFO] default - Application start on Port 9090
+[2025-07-25T16:07:13.131] [INFO] default - Sequelize with Postgres Connected
+[2025-07-25T16:07:13.137] [INFO] default - Application start on Port 9090
+[2025-07-25T20:28:30.390] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 20:28:30 GMT+0530 (India Standard Time)
+[2025-07-25T20:28:30.428] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 20:28:30 GMT+0530 (India Standard Time)
+[2025-07-25T20:30:57.361] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 20:30:57 GMT+0530 (India Standard Time)
+[2025-07-25T20:30:57.538] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 20:30:57 GMT+0530 (India Standard Time)
+[2025-07-25T20:31:27.155] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 20:31:27 GMT+0530 (India Standard Time)
+[2025-07-25T20:31:27.174] [INFO] default - GET localhost /api/v1/categorie Fri Jul 25 2025 20:31:27 GMT+0530 (India Standard Time)
+[2025-07-26T15:33:59.272] [INFO] default - GET localhost /api/v1/categorie Sat Jul 26 2025 15:33:59 GMT+0530 (India Standard Time)
+[2025-07-26T15:33:59.286] [INFO] default - GET localhost /api/v1/categorie Sat Jul 26 2025 15:33:59 GMT+0530 (India Standard Time)
